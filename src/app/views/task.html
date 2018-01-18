@@ -1,0 +1,39 @@
+<div class="col-md-12">
+    <div class="loader" *ngIf="loading == 'show'">
+        <img src='assets/img/loader.gif' />
+    </div>
+    <div class="col-md-12" *ngIf="!loading || task">
+         <legend>{{page_title}}</legend>
+        <div class="alert alert-success" *ngIf="status_task == 'success'">
+            Tarea creada correctamente.
+        </div>
+        <div class="alert alert-danger" *ngIf="status_task == 'error'">
+            Error al crear la tarea.
+        </div>
+        <form #taskNewForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7 no-padding">
+            <mat-form-field class="full-width">
+                <input matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="title" #title="ngModel" [(ngModel)]="task.title" required autofocus>
+                <mat-error *ngIf="!title.valid && title.touched">
+                    El nombre es <strong>requerido</strong>.
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <br />
+            <mat-form-field class="full-width">
+                <textarea matInput matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
+            </mat-form-field>
+            <br />
+            <div class='panel panel-default task-data' *ngIf='task.id != 0' style="display:none">
+                <div class='panel-heading'>
+                    <strong>Fecha creación:</strong> {{task.createdAt.timestamp | generateDate }}.
+                </div>
+                <div class='panel-heading'>
+                    <strong>Tarea creada por:</strong> {{task.user.name + ' ' + task.user.surname}}.
+                </div>
+            </div>
+            <br />
+            <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
+            <button mat-raised-button color="secundary" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">Borrar</button>
+        </form>
+    </div>
+</div>
