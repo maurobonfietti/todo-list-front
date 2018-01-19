@@ -21,6 +21,8 @@ export class DefaultComponent implements OnInit {
     public pagesNext;
     public loading = 'show';
 
+    public task: Task;
+
     public filter = 2;
     public order = 1;
     public searchString: string;
@@ -41,6 +43,25 @@ export class DefaultComponent implements OnInit {
     ngOnInit() {
         console.log('default.component [OK]');
         this.search();
+        this.task = new Task(0, '', '', 'todo', 'null', 'null');
+    }
+
+    createTask() {
+//        this.task = new Task(0, '...', '', 'todo', 'null', 'null');
+        this._taskService.create(this.token, this.task).subscribe(
+            response => {
+                this.status_task = response.status;
+                if (this.status_task != "success") {
+                    this.status_task = 'error';
+                } else {
+                    this.task = response.data;
+                    this._router.navigate(['/']);
+                }
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
     }
 
     search() {
