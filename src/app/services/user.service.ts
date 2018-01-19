@@ -11,7 +11,7 @@ export class UserService {
     public token;
 
     constructor(private _http: Http) {
-        this.url = "http://localhost/webapp/backend/web/app_dev.php";
+        this.url = "http://localhost/webapp/web/app_dev.php";
     }
 
     signUp(user_to_login: string) {
