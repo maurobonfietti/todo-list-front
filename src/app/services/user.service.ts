@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {User} from '../models/user';
 import "rxjs/add/operator/map";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,9 @@ export class UserService {
     public token;
 
     constructor(private _http: Http) {
-        this.url = "http://localhost/webapp/web/app_dev.php";
+        this.url = environment.apiUrl;
+        console.log('production: ' + environment.production);
+        console.log('apiUrl: ' + this.url);
     }
 
     signUp(user_to_login: string) {

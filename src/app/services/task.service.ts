@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import "rxjs/add/operator/map";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TaskService {
     public url: string;
 
     constructor(private _http: Http) {
-        this.url = "http://localhost/webapp/web/app_dev.php";
+        this.url = environment.apiUrl;
     }
 
     create(token, task) {
