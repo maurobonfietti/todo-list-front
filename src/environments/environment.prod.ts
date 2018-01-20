@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost/webapp/web/app.php',
+  apiUrl: 'https://webapp-another-todo-list.herokuapp.com',
 };
