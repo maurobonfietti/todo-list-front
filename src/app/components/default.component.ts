@@ -47,7 +47,6 @@ export class DefaultComponent implements OnInit {
     }
 
     createTask() {
-//        this.task = new Task(0, '...', '', 'todo', 'null', 'null');
         this._taskService.create(this.token, this.task).subscribe(
             response => {
                 this.status_task = response.status;
@@ -113,6 +112,7 @@ export class DefaultComponent implements OnInit {
                     if (this.status_task != "success") {
                         this.status_task = 'error';
                     } else {
+                        this.playAudio();
                         this.search();
                     }
                 },
@@ -121,5 +121,21 @@ export class DefaultComponent implements OnInit {
                 }
             );
         });
+    }
+
+    playAudio(){
+        let audio = new Audio();
+//        audio.src = "../../assets/sound.wav";
+//        audio.src = "../../assets/tada.mp3";
+//        audio.src = "../../assets/tone.mp3";
+//        audio.src = "../../assets/magic.mp3";
+//        audio.src = "../../assets/success.mp3";
+        audio.src = "../../assets/level.mp3";
+//        audio.src = "../../assets/successful.mp3";
+//        audio.src = "../../assets/powerup.mp3";
+//        audio.src = "../../assets/success-low.mp3"; ...
+//        audio.src = "../../assets/item.mp3";
+        audio.load();
+        audio.play();
     }
 }
