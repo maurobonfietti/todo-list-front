@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/webapp/web/app_dev.php',
+  apiUrl: 'https://webapp-another-todo-list.herokuapp.com',
 };
