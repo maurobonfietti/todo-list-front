@@ -13,8 +13,8 @@ export class UserService {
 
     constructor(private _http: Http) {
         this.url = environment.apiUrl;
+        console.log('url: ' + this.url);
         console.log('production: ' + environment.production);
-        console.log('apiUrl: ' + this.url);
     }
 
     signUp(user_to_login: string) {

@@ -21,7 +21,6 @@ export class AppComponent {
 
     ngOnInit() {
         console.log("app.component [OK]");
-        console.log("web.app.todo.list [OK]");
-        console.log("version: 0.10.0");
+        console.log("todo.list.version: 0.10.0");
     }
 }

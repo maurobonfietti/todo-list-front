@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://webapp-another-todo-list.herokuapp.com',
+  apiUrl: 'https://todo-list-back.herokuapp.com',
 //  apiUrl: 'http://localhost/todo-list-back/web',
 };

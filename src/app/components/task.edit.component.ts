@@ -86,6 +86,7 @@ export class TaskEditComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
+                console.log(response);
                 this._router.navigate(['/index/1']);
             },
             error => {
