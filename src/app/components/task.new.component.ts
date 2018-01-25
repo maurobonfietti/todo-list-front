@@ -17,6 +17,7 @@ export class TaskNewComponent implements OnInit {
     public token;
     public task: Task;
     public status_task;
+    public loading;
 
     constructor(
         private _router: Router,
