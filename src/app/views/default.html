@@ -68,10 +68,6 @@
                 </tr>
             </table>
             <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
-                <!--<div class='clearfix'></div>-->
-<!--                <div class="alert alert-warning" >
-                    No se han encontrado tareas. Crealas, haciendo <a [routerLink]="['/task-new']">click aquí</a>
-                </div>-->
                 <mat-chip-list>
                     <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
                 </mat-chip-list>

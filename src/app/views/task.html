@@ -23,6 +23,9 @@
                 <textarea matInput matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
             </mat-form-field>
             <br />
+            <br />
+            <mat-slide-toggle name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
+            <br />
             <div class='panel panel-default task-data' *ngIf='task.id != 0' style="display:none">
                 <div class='panel-heading'>
                     <strong>Fecha creación:</strong> {{task.createdAt.timestamp | generateDate }}.
@@ -31,6 +34,7 @@
                     <strong>Tarea creada por:</strong> {{task.user.name + ' ' + task.user.surname}}.
                 </div>
             </div>
+            <br />
             <br />
             <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
             <button mat-raised-button color="secundary" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">Borrar</button>
