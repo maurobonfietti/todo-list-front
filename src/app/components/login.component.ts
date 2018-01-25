@@ -28,7 +28,6 @@ export class SnackBarLoginError {
 }
 
 @Component({
-//    selector: 'login',
     templateUrl: '../views/login.html',
     providers: [UserService]
 })

@@ -6,26 +6,25 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatSnackBar} from '@angular/material';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
+export class errorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const isSubmitted = form && form.submitted;
         return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
     }
 }
 
+
 @Component({
-    selector: 'snack-bar-component-example',
-    templateUrl: '../views/register.error.html',
+    templateUrl: '../views/register.ok.html',
 })
-export class SnackBarComponentExampleError2 {
+export class SnackBarRegisterOk {
     constructor(public snackBar: MatSnackBar) {}
 }
 
 @Component({
-    selector: 'snack-bar-component-example',
-    templateUrl: '../views/register.ok.html',
+    templateUrl: '../views/register.error.html',
 })
-export class SnackBarComponentExampleError3 {
+export class SnackBarRegisterError {
     constructor(public snackBar: MatSnackBar) {}
 }
 
@@ -45,7 +44,7 @@ export class RegisterComponent implements OnInit {
         Validators.email,
     ]);
 
-    matcher = new MyErrorStateMatcher();
+    matcher = new errorStateMatcher();
 
     constructor(
         private _userService: UserService,
@@ -55,14 +54,14 @@ export class RegisterComponent implements OnInit {
         this.user = new User(1, "user", "", "", "", "");
     }
 
-    openSnackBarError() {
-        this.snackBar.openFromComponent(SnackBarComponentExampleError2, {
+    openSnackBarOk() {
+        this.snackBar.openFromComponent(SnackBarRegisterOk, {
             duration: 3000,
         });
     }
 
-    openSnackBarOk() {
-        this.snackBar.openFromComponent(SnackBarComponentExampleError3, {
+    openSnackBarError() {
+        this.snackBar.openFromComponent(SnackBarRegisterError, {
             duration: 3000,
         });
     }
