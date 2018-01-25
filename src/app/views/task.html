@@ -2,7 +2,7 @@
     <div class="loader" *ngIf="loading == 'show'">
         <img src='assets/img/loader.gif' />
     </div>
-    <div class="col-md-12" *ngIf="!loading || task">
+    <div class="col-md-12" *ngIf="task">
          <legend>{{page_title}}</legend>
         <div class="alert alert-success" *ngIf="status_task == 'success'">
             Tarea creada correctamente.
