@@ -24,7 +24,7 @@
             </mat-form-field>
             <br />
             <br />
-            <mat-slide-toggle name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
+            <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
             <br />
             <div class='panel panel-default task-data' *ngIf='task.id != 0' style="display:none">
                 <div class='panel-heading'>
