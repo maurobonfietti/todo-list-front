@@ -6,7 +6,7 @@ import {UserService} from '../services/user.service';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
+export class errorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const isSubmitted = form && form.submitted;
         return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
@@ -31,7 +31,7 @@ export class UserEditComponent implements OnInit {
         Validators.email,
     ]);
 
-    matcher = new MyErrorStateMatcher();
+    matcher = new errorStateMatcher();
 
     constructor(
         private _router: Router,
