@@ -112,7 +112,7 @@ export class DefaultComponent implements OnInit {
                     if (this.status_task != "success") {
                         this.status_task = 'error';
                     } else {
-                        this.playAudio();
+                        this.playSound();
                         this.search();
                     }
                 },
@@ -123,18 +123,9 @@ export class DefaultComponent implements OnInit {
         });
     }
 
-    playAudio(){
+    playSound(){
         let audio = new Audio();
-//        audio.src = "../../assets/sound.wav";
-//        audio.src = "../../assets/tada.mp3";
-//        audio.src = "../../assets/tone.mp3";
-//        audio.src = "../../assets/magic.mp3";
-//        audio.src = "../../assets/success.mp3";
-        audio.src = "../../assets/level.mp3";
-//        audio.src = "../../assets/successful.mp3";
-//        audio.src = "../../assets/powerup.mp3";
-//        audio.src = "../../assets/success-low.mp3"; ...
-//        audio.src = "../../assets/item.mp3";
+        audio.src = "../../assets/sound/level.mp3";
         audio.load();
         audio.play();
     }
