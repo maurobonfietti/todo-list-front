@@ -58,6 +58,15 @@
                     </td>
                     <td>
                         <h4>
+                            <!--<mat-icon color="warn">bookmark</mat-icon>-->
+                            <!--<mat-icon color="warn">query_builder</mat-icon>-->
+                            <mat-icon color="warn" *ngIf="task.priority == true">stars</mat-icon>
+                            <!--<mat-icon color="primary">star_border</mat-icon>-->
+                            <!--<mat-icon color="warn">star_rate</mat-icon>-->
+                        </h4>
+                    </td>
+                    <td>
+                        <h4>
                             <a class="task strike-through" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 'finished'">{{task.title | slice:0:100}} {{task.title.length > 100 ? '[...]' : ''}}</a>
                             <a class="task" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 'todo'">{{task.title | slice:0:100}} {{task.title.length > 100 ? '[...]' : ''}}</a>
                         </h4>
