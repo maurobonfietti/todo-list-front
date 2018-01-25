@@ -6,7 +6,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatSnackBar} from '@angular/material';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
+export class errorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const isSubmitted = form && form.submitted;
         return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
@@ -14,23 +14,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-    selector: 'snack-bar-component-example',
     templateUrl: '../views/login.ok.html',
 })
-export class SnackBarComponentExample {
+export class SnackBarLoginOk {
     constructor(public snackBar: MatSnackBar) {}
 }
 
 @Component({
-    selector: 'snack-bar-component-example',
     templateUrl: '../views/login.error.html',
 })
-export class SnackBarComponentExampleError {
+export class SnackBarLoginError {
     constructor(public snackBar: MatSnackBar) {}
 }
 
 @Component({
-    selector: 'login',
+//    selector: 'login',
     templateUrl: '../views/login.html',
     providers: [UserService]
 })
@@ -42,7 +40,7 @@ export class LoginComponent implements OnInit {
         Validators.email,
     ]);
 
-    matcher = new MyErrorStateMatcher();
+    matcher = new errorStateMatcher();
 
     public title: string;
     public user;
@@ -64,13 +62,13 @@ export class LoginComponent implements OnInit {
     }
 
     openSnackBar() {
-        this.snackBar.openFromComponent(SnackBarComponentExample, {
+        this.snackBar.openFromComponent(SnackBarLoginOk, {
             duration: 3000,
         });
     }
 
     openSnackBarError() {
-        this.snackBar.openFromComponent(SnackBarComponentExampleError, {
+        this.snackBar.openFromComponent(SnackBarLoginError, {
             duration: 3000,
         });
     }

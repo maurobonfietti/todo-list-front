@@ -11,7 +11,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {routing, appRoutingProviders} from './app.routing';
 import {AppComponent} from './app.component';
-import {LoginComponent, SnackBarComponentExample, SnackBarComponentExampleError} from './components/login.component';
+import {LoginComponent, SnackBarLoginOk, SnackBarLoginError} from './components/login.component';
 import {RegisterComponent, SnackBarComponentExampleError2, SnackBarComponentExampleError3} from './components/register.component';
 import {DefaultComponent} from './components/default.component';
 import {UserEditComponent} from './components/user.edit.component';
@@ -29,8 +29,8 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         TaskNewComponent,
         TaskEditComponent,
         GenerateDatePipe,
-        SnackBarComponentExample,
-        SnackBarComponentExampleError,
+        SnackBarLoginOk,
+        SnackBarLoginError,
         SnackBarComponentExampleError2,
         SnackBarComponentExampleError3,
     ],
@@ -55,8 +55,8 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         ReactiveFormsModule
     ],
     entryComponents: [
-        SnackBarComponentExample,
-        SnackBarComponentExampleError,
+        SnackBarLoginOk,
+        SnackBarLoginError,
         SnackBarComponentExampleError2,
         SnackBarComponentExampleError3,
     ],
