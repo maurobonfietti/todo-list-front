@@ -79,8 +79,8 @@
               <mat-expansion-panel *ngFor="let task of tasks">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>
-                    &nbsp;&nbsp;&nbsp;
+<!--                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>
+                    &nbsp;&nbsp;&nbsp;-->
                     <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
                         Finalizada
                     </span>
@@ -109,6 +109,9 @@
                 <br />
                 <br />
                 <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
+                <br />
+                <br />
+                <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);">Actualizar estado tarea</mat-checkbox>
                 <br />
                 <br />
                 <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" (click)="updateTask(task)">Guardar</button>
