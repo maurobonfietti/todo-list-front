@@ -123,6 +123,38 @@ export class DefaultComponent implements OnInit {
         });
     }
 
+    updateTask(id: string) {
+//        this._route.params.forEach((params: Params) => {
+//            let id = +params['id'];
+            this._taskService.update(this.token, this.task, id).subscribe(
+                response => {
+                    this.status_task = response.status;
+                    if (this.status_task != "success") {
+                        this.status_task = 'error';
+                    } else {
+                        this.task = response.data;
+                        this._router.navigate(['/index/1']);
+                    }
+                },
+                error => {
+                    console.log(<any> error);
+                }
+            );
+//        });
+    }
+
+    deleteTask(id: string) {
+        this._taskService.deleteTask(this.token, id).subscribe(
+            response => {
+                console.log(response);
+                this._router.navigate(['/index/1']);
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
+    }
+
     playSound(){
         let audio = new Audio();
         audio.src = "../../assets/sound/level.mp3";
