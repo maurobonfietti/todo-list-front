@@ -42,7 +42,7 @@
             </button>
         </form>
         <div class="all-tasks">
-            <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
+<!--            <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
                 <tr class="task-item" *ngFor="let task of tasks">
                     <td>
                         <h4>
@@ -74,67 +74,50 @@
                         <button mat-raised-button color="primary" matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
                     </td>
                 </tr>
-            </table>
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let task of tasks">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <!--<mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>-->
-        <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
-            Finalizada
-        </span>
-        <span class='label lg-label label-warning' *ngIf="task.status == 'todo'">
-            Pendiente
-        </span>
-        <!--<mat-icon color="warn" *ngIf="task.priority == true">stars</mat-icon>-->
-      </mat-panel-title>
-      <mat-panel-description>
-        <div *ngIf="task.status == 'finished'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
-        <div *ngIf="task.status == 'todo'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
-  </mat-expansion-panel>
-<!--  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Personal data
-      </mat-panel-title>
-      <mat-panel-description>
-        Type your name and age
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
-  </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Self aware panel
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
-  </mat-expansion-panel>-->
-</mat-accordion>
-
+            </table>-->
+            <mat-accordion>
+              <mat-expansion-panel *ngFor="let task of tasks">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>
+                    &nbsp;&nbsp;&nbsp;
+                    <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
+                        Finalizada
+                    </span>
+                    <span class='label lg-label label-warning' *ngIf="task.status == 'todo'">
+                        Pendiente
+                    </span>
+                    &nbsp;&nbsp;&nbsp;
+                    <mat-icon color="warn" *ngIf="task.priority == true">stars</mat-icon>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <div class="task strike-through" *ngIf="task.status == 'finished'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
+                    <div class="task" *ngIf="task.status == 'todo'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field class="full-width">
+                    <input matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="title" #title="ngModel" [(ngModel)]="task.title" required autofocus>
+                    <mat-error *ngIf="!title.valid && title.touched">
+                        El nombre es <strong>requerido</strong>.
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <br />
+                <mat-form-field class="full-width">
+                    <textarea matInput matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
+                </mat-form-field>
+                <br />
+                <br />
+                <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
+                <br />
+                <br />
+                <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea">Guardar</button>
+                &nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="primary" matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
+                &nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="accent" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">Borrar</button>
+              </mat-expansion-panel>
+            </mat-accordion>
             <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
                 <mat-chip-list>
                     <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
