@@ -76,11 +76,11 @@
                 </tr>
             </table>-->
             <mat-accordion>
-              <mat-expansion-panel *ngFor="let task of tasks">
+              <mat-expansion-panel ng-model="checked" *ngFor="let task of tasks">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-<!--                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>
-                    &nbsp;&nbsp;&nbsp;-->
+                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);" ng-hide="checked"></mat-checkbox>
+                    &nbsp;&nbsp;&nbsp;
                     <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
                         Finalizada
                     </span>

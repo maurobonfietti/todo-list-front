@@ -105,13 +105,15 @@ export class DefaultComponent implements OnInit {
     }
 
     updateStatus(id: string) {
-        this._route.params.forEach(() => {
+//        alert('asd!!');
+//        this._route.params.forEach(() => {
             this._taskService.updateStatus(this.token, id).subscribe(
                 response => {
                     this.status_task = response.status;
                     if (this.status_task != "success") {
                         this.status_task = 'error';
                     } else {
+//                        alert('asddd!!');
                         this.playSound();
                         this.search();
                     }
@@ -120,7 +122,7 @@ export class DefaultComponent implements OnInit {
                     console.log(<any> error);
                 }
             );
-        });
+//        });
     }
 
     updateTask(task: Task) {
