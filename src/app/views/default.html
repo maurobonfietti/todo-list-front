@@ -42,7 +42,7 @@
             </button>
         </form>
         <div class="all-tasks">
-<!--            <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
+            <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
                 <tr class="task-item" *ngFor="let task of tasks">
                     <td>
                         <h4>
@@ -74,8 +74,8 @@
                         <button mat-raised-button color="primary" matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
                     </td>
                 </tr>
-            </table>-->
-            <mat-accordion>
+            </table>
+<!--            <mat-accordion>
               <mat-expansion-panel ng-model="checked" *ngFor="let task of tasks">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
@@ -121,7 +121,7 @@
                 <button mat-raised-button color="warn" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">Borrar</button>
                 &nbsp;&nbsp;&nbsp;
               </mat-expansion-panel>
-            </mat-accordion>
+            </mat-accordion>-->
             <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
                 <mat-chip-list>
                     <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
