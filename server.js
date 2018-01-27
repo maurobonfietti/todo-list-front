@@ -13,8 +13,8 @@ const forceSSL = function() {
       );
     }
     next();
-  }
-}
+  };
+};
 
 app.use(forceSSL());
 
