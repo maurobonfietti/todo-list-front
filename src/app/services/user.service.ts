@@ -54,7 +54,7 @@ export class UserService {
         let params = "json=" + json;
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
 
-        return this._http.post(this.url + '/user/new', params, {headers: headers}).map(res => res.json());
+        return this._http.post(this.url + '/user', params, {headers: headers}).map(res => res.json());
     }
 
     update_user(user_to_update: User) {
@@ -63,6 +63,6 @@ export class UserService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', this.getToken());
 
-        return this._http.patch(this.url + '/user/edit', params, {headers: headers}).map(res => res.json());
+        return this._http.patch(this.url + '/user', params, {headers: headers}).map(res => res.json());
     }
 }

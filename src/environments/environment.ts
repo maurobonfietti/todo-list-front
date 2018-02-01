@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/todo-list-back/web',
+  apiUrl: 'http://localhost/todo-list-back/web/app_dev.php',
 };
