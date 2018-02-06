@@ -26,14 +26,6 @@
             <br />
             <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
             <br />
-            <div class='panel panel-default task-data' *ngIf='task.id != 0' style="display:none">
-                <div class='panel-heading'>
-                    <strong>Fecha creación:</strong> {{task.createdAt.timestamp | generateDate }}.
-                </div>
-                <div class='panel-heading'>
-                    <strong>Tarea creada por:</strong> {{task.user.name + ' ' + task.user.surname}}.
-                </div>
-            </div>
             <br />
             <br />
             <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
