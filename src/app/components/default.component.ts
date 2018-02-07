@@ -23,6 +23,7 @@ export class DefaultComponent implements OnInit {
 
     public task: Task;
 
+    public priority = 2;
     public filter = 2;
     public order = 1;
     public searchString: string;
@@ -73,7 +74,7 @@ export class DefaultComponent implements OnInit {
             if (!page) {
                 page = 1;
             }
-            this._taskService.search(this.token, this.searchString, this.filter, this.order, page).subscribe(
+            this._taskService.search(this.token, this.searchString, this.filter, this.order, this.priority, page).subscribe(
                 response => {
                     if (response.status == 'success') {
                         this.tasks = response.data;

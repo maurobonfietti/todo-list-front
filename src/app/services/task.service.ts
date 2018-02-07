@@ -20,9 +20,9 @@ export class TaskService {
         return this._http.post(this.url + '/task/new', params, {headers: headers}).map(res => res.json());
     }
 
-    search(token, search = null, filter = null, order = null, page = null) {
+    search(token, search = null, filter = null, order = null, priority = null, page = null) {
         let url: string;
-        let params = '&filter=' + filter + '&order=' + order;
+        let params = '&filter=' + filter + '&order=' + order + '&priority=' + priority;
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
         if (page == null) {
