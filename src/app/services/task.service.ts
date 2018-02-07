@@ -60,6 +60,14 @@ export class TaskService {
         return this._http.patch(this.url + '/task/update-status/' + id, params, {headers: headers}).map(res => res.json());
     }
 
+    updatePriority(token, id) {
+        let params = '&authorization=' + token;
+        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
+        headers.append('Authorization', token);
+
+        return this._http.patch(this.url + '/task/update-priority/' + id, params, {headers: headers}).map(res => res.json());
+    }
+
     deleteTask(token, id) {
         let headers = new Headers({'Authorization': token});
 

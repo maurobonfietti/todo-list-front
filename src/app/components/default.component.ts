@@ -105,24 +105,36 @@ export class DefaultComponent implements OnInit {
     }
 
     updateStatus(id: string) {
-//        alert('asd!!');
-//        this._route.params.forEach(() => {
-            this._taskService.updateStatus(this.token, id).subscribe(
-                response => {
-                    this.status_task = response.status;
-                    if (this.status_task != "success") {
-                        this.status_task = 'error';
-                    } else {
-//                        alert('asddd!!');
-                        this.playSound();
-                        this.search();
-                    }
-                },
-                error => {
-                    console.log(<any> error);
+        this._taskService.updateStatus(this.token, id).subscribe(
+            response => {
+                this.status_task = response.status;
+                if (this.status_task != "success") {
+                    this.status_task = 'error';
+                } else {
+                    this.playSound();
+                    this.search();
                 }
-            );
-//        });
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
+    }
+
+    updatePriority(id: string) {
+        this._taskService.updatePriority(this.token, id).subscribe(
+            response => {
+                this.status_task = response.status;
+                if (this.status_task != "success") {
+                    this.status_task = 'error';
+                } else {
+                    this.search();
+                }
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
     }
 
     updateTask(task: Task) {
@@ -146,7 +158,6 @@ export class DefaultComponent implements OnInit {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
                 console.log(response);
-//                this._router.navigate(['/index/1']);
                 this.search();
             },
             error => {
