@@ -60,13 +60,10 @@
                         </h4>
                     </td>
                     <td>
-<!--                        <h4>
-                            <mat-icon color="warn" *ngIf="task.priority == true">stars</mat-icon>
-                        </h4>-->
-                        <button mat-icon-button color="warn" *ngIf="task.priority == true">
+                        <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority == true">
                             <mat-icon>star</mat-icon>
                         </button>
-                        <button mat-icon-button color="warn" *ngIf="task.priority != true">
+                        <button mat-icon-button color="warn" (click)="updatePriority(task.id)" *ngIf="task.priority != true">
                             <mat-icon>star_border</mat-icon>
                         </button>
                     </td>

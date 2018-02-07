@@ -121,6 +121,22 @@ export class DefaultComponent implements OnInit {
         );
     }
 
+    updatePriority(id: string) {
+        this._taskService.updatePriority(this.token, id).subscribe(
+            response => {
+                this.status_task = response.status;
+                if (this.status_task != "success") {
+                    this.status_task = 'error';
+                } else {
+                    this.search();
+                }
+            },
+            error => {
+                console.log(<any> error);
+            }
+        );
+    }
+
     updateTask(task: Task) {
         this._taskService.update(this.token, task, task.id).subscribe(
             response => {
