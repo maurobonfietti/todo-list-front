@@ -22,7 +22,7 @@ export class TaskService {
 
     search(token, search = null, filter = null, order = null, page = null) {
         let url: string;
-        let params = 'authorization=' + token + '&filter=' + filter + '&order=' + order;
+        let params = '&filter=' + filter + '&order=' + order;
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
         if (page == null) {
@@ -34,7 +34,7 @@ export class TaskService {
             url = this.url + '/task/search/' + search + '?page=' + page;
         }
 
-        return this._http.post(url, params, {headers: headers}).map(res => res.json());
+        return this._http.get(url + '?' + params, {headers: headers}).map(res => res.json());
     }
 
     getTask(token, id) {
