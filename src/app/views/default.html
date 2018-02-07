@@ -6,7 +6,7 @@
         <form class="col-md-12">
             <div class="form-group col-md-4">
                 <mat-form-field>
-                    <mat-select placeholder="Mostrar" name="filter" [(ngModel)]="filter" (change)="search();">
+                    <mat-select placeholder="Mostrar" name="filter" [(ngModel)]="filter" (change)="search()">
                         <mat-option [value]="0">Todas las tareas</mat-option>
                         <mat-option [value]="2">Tareas pendientes</mat-option>
                         <mat-option [value]="3">Tareas finalizadas</mat-option>
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group col-md-4">
                 <mat-form-field>
-                    <mat-select placeholder="Ordenar por" name="order" [(ngModel)]="order" (change)="search();">
+                    <mat-select placeholder="Ordenar por" name="order" [(ngModel)]="order" (change)="search()">
                         <mat-option [value]="1">Fecha creación ascendente</mat-option>
                         <mat-option [value]="2">Fecha creación descendente</mat-option>
                     </mat-select>
@@ -28,7 +28,7 @@
             <div class="form-group col-md-10">
                 <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" />
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search();">
+            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
               <i class="material-icons">search</i>
             </button>
         </form>
@@ -37,7 +37,7 @@
             <div class="form-group col-md-10">
                 <input type="text" class="form-control" placeholder="Crear una tarea nueva..." name="title" #title="ngModel" [(ngModel)]="task.title" />
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask();">
+            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask()">
               <i class="material-icons">add</i>
             </button>
         </form>
@@ -46,7 +46,7 @@
                 <tr class="task-item" *ngFor="let task of tasks">
                     <td>
                         <h4>
-                            <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);"></mat-checkbox>
+                            <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id)"></mat-checkbox>
                         </h4>
                     </td>
                     <td>
@@ -81,53 +81,6 @@
                     </td>
                 </tr>
             </table>
-<!--            <mat-accordion>
-              <mat-expansion-panel ng-model="checked" *ngFor="let task of tasks">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);" ng-hide="checked"></mat-checkbox>
-                    &nbsp;&nbsp;&nbsp;
-                    <span class='label lg-label label-success' *ngIf="task.status == 'finished'">
-                        Finalizada
-                    </span>
-                    <span class='label lg-label label-warning' *ngIf="task.status == 'todo'">
-                        Pendiente
-                    </span>
-                    &nbsp;&nbsp;&nbsp;
-                    <mat-icon color="warn" *ngIf="task.priority == true">stars</mat-icon>
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    <div class="task strike-through" *ngIf="task.status == 'finished'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
-                    <div class="task" *ngIf="task.status == 'todo'">{{task.title | slice:0:70}} {{task.title.length > 70 ? '[...]' : ''}}</div>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-form-field class="full-width">
-                    <input matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="title" #title="ngModel" [(ngModel)]="task.title" required autofocus>
-                    <mat-error *ngIf="!title.valid && title.touched">
-                        El nombre es <strong>requerido</strong>.
-                    </mat-error>
-                </mat-form-field>
-                <br />
-                <br />
-                <mat-form-field class="full-width">
-                    <textarea matInput matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
-                </mat-form-field>
-                <br />
-                <br />
-                <mat-slide-toggle color="warn" name="priority" #priority="ngModel" [(ngModel)]="task.priority">Tarea Prioritaria</mat-slide-toggle>
-                <br />
-                <br />
-                <mat-checkbox color="primary" name="updateStatus" (change)="updateStatus(task.id);">Actualizar estado tarea</mat-checkbox>
-                <br />
-                <br />
-                <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" (click)="updateTask(task)">Guardar</button>
-                &nbsp;&nbsp;&nbsp;
-                <button mat-raised-button matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
-                &nbsp;&nbsp;&nbsp;
-                <button mat-raised-button color="warn" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">Borrar</button>
-                &nbsp;&nbsp;&nbsp;
-              </mat-expansion-panel>
-            </mat-accordion>-->
             <div class='col-md-12' *ngIf="loading == 'hide' && (!tasks || tasks.length == 0)">
                 <mat-chip-list>
                     <mat-chip color="primary" selected="true">No se han encontrado tareas</mat-chip>
