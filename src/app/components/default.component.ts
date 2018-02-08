@@ -54,8 +54,10 @@ export class DefaultComponent implements OnInit {
                 if (this.status_task != "success") {
                     this.status_task = 'error';
                 } else {
-                    this.task = response.data;
-                    this._router.navigate(['/']);
+//                    this.task = response.data;
+//                    this._router.navigate(['/']);
+                    this.task = new Task(0, '', '', 'todo', 'null', 'null');
+                    this.search();
                 }
             },
             error => {
