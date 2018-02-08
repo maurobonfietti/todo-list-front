@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {UserService} from '../services/user.service';
 import {TaskService} from '../services/task.service';
 import {Task} from '../models/task';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'default',
@@ -33,12 +34,19 @@ export class DefaultComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private _taskService: TaskService
+        private _taskService: TaskService,
+        public snackBar: MatSnackBar
     ) {
         this.title = 'Home Page';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.loading = 'show';
+    }
+
+    openSnackBar(message: string) {
+      this.snackBar.open(message, null, {
+        duration: 2000,
+      });
     }
 
     ngOnInit() {
@@ -54,8 +62,7 @@ export class DefaultComponent implements OnInit {
                 if (this.status_task != "success") {
                     this.status_task = 'error';
                 } else {
-//                    this.task = response.data;
-//                    this._router.navigate(['/']);
+                    this.openSnackBar('Tarea creada exitosamente');
                     this.task = new Task(0, '', '', 'todo', 'null', 'null');
                     this.search();
                 }

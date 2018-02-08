@@ -39,7 +39,7 @@ body {
 }
 
 .mat-snack-bar-container.mat-snack-bar-center {
-    margin: 50px !important;
+    /*margin: 50px !important;*/
 }
 
 .task {
