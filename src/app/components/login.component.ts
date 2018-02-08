@@ -14,20 +14,6 @@ export class errorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-    templateUrl: '../views/login.ok.html',
-})
-export class SnackBarLoginOk {
-    constructor(public snackBar: MatSnackBar) {}
-}
-
-@Component({
-    templateUrl: '../views/login.error.html',
-})
-export class SnackBarLoginError {
-    constructor(public snackBar: MatSnackBar) {}
-}
-
-@Component({
     templateUrl: '../views/login.html',
     providers: [UserService]
 })
@@ -60,22 +46,10 @@ export class LoginComponent implements OnInit {
         };
     }
 
-    openSnackBar2(message: string) {
+    openSnackBar(message: string) {
       this.snackBar.open(message, null, {
-        duration: 2000,
+        duration: 3000,
       });
-    }
-
-    openSnackBar() {
-        this.snackBar.openFromComponent(SnackBarLoginOk, {
-            duration: 3000,
-        });
-    }
-
-    openSnackBarError() {
-        this.snackBar.openFromComponent(SnackBarLoginError, {
-            duration: 3000,
-        });
     }
 
     ngOnInit() {
@@ -123,8 +97,7 @@ export class LoginComponent implements OnInit {
                                 } {
                                     if (!this.token.status) {
                                         localStorage.setItem('token', JSON.stringify(this.token));
-//                                        this.openSnackBar();
-                                        this.openSnackBar2('¡Te has identificado correctamente!');
+                                        this.openSnackBar('¡Te has identificado correctamente!');
                                         window.location.href = '/index/1';
                                     }
                                 }
@@ -138,7 +111,7 @@ export class LoginComponent implements OnInit {
             },
             error => {
                 console.log(<any> error);
-                this.openSnackBarError();
+                this.openSnackBar('El email y contraseña ingresados son incorrectos.');
             }
         );
     }
