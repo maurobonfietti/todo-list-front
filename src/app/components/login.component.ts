@@ -60,6 +60,12 @@ export class LoginComponent implements OnInit {
         };
     }
 
+    openSnackBar2(message: string) {
+      this.snackBar.open(message, null, {
+        duration: 2000,
+      });
+    }
+
     openSnackBar() {
         this.snackBar.openFromComponent(SnackBarLoginOk, {
             duration: 3000,
@@ -117,7 +123,8 @@ export class LoginComponent implements OnInit {
                                 } {
                                     if (!this.token.status) {
                                         localStorage.setItem('token', JSON.stringify(this.token));
-                                        this.openSnackBar();
+//                                        this.openSnackBar();
+                                        this.openSnackBar2('¡Te has identificado correctamente!');
                                         window.location.href = '/index/1';
                                     }
                                 }
