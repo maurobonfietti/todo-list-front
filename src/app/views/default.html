@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-12" *ngIf="identity && identity.sub">
         <form class="col-md-12">
-            <div class="form-group col-md-4">
+            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Filtrar" name="filter" [(ngModel)]="filter" (change)="search()">
                         <mat-option [value]="0">Todas las tareas</mat-option>
@@ -13,7 +13,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="form-group col-md-4">
+            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Mostrar" name="priority" [(ngModel)]="priority" (change)="search()">
                         <mat-option [value]="2">Todas las tareas</mat-option>
@@ -22,7 +22,7 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="form-group col-md-4">
+            <div class="col-md-4">
                 <mat-form-field>
                     <mat-select placeholder="Ordenar por" name="order" [(ngModel)]="order" (change)="search()">
                         <mat-option [value]="1">Fecha creación ascendente</mat-option>
@@ -31,11 +31,11 @@
                 </mat-form-field>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group col-md-10">
-                <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()" />
-                <!--<mat-form-field class="full-width">-->
-                    <!--<input matInput matTooltip="El nombre de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keypress)="search()" (keydown)="search()" (change)="search()">-->
-                <!--</mat-form-field>-->
+            <div class="col-md-11">
+<!--                <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()" />-->
+                <mat-form-field class="full-width">
+                    <input matInput matTooltip="Ingresa una descripcion de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
+                </mat-form-field>
             </div>
             <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
               <i class="material-icons">search</i>
@@ -43,8 +43,11 @@
         </form>
         <form class="col-md-12">
             <div class="clearfix"></div>
-            <div class="form-group col-md-10">
-                <input type="text" class="form-control" placeholder="Crear una tarea nueva..." name="title" #title="ngModel" [(ngModel)]="task.title" />
+            <div class="col-md-11">
+                <!--<input type="text" class="form-control" placeholder="Crear una tarea nueva..." name="title" #title="ngModel" [(ngModel)]="task.title" />-->
+                <mat-form-field class="full-width">
+                    <input matInput matTooltip="Ingresa el nombre de la tarea que quieres crear" placeholder="Crear una tarea nueva..." name="title" [(ngModel)]="task.title">
+                </mat-form-field>
             </div>
             <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask()">
               <i class="material-icons">add</i>
