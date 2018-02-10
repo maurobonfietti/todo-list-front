@@ -17,7 +17,7 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.post(this.url + '/task/new', params, {headers: headers}).map(res => res.json());
+        return this._http.post(this.url + '/task', params, {headers: headers}).map(res => res.json());
     }
 
     search(token, search = null, filter = null, order = null, priority = null, page = null) {
@@ -40,7 +40,7 @@ export class TaskService {
     getTask(token, id) {
         let headers = new Headers({'Authorization': token});
 
-        return this._http.get(this.url + '/task/detail/' + id, {headers: headers}).map(res => res.json());
+        return this._http.get(this.url + '/task/' + id, {headers: headers}).map(res => res.json());
     }
 
     update(token, task, id) {
@@ -49,7 +49,7 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/edit/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http.patch(this.url + '/task/' + id, params, {headers: headers}).map(res => res.json());
     }
 
     updateStatus(token, id) {
@@ -57,7 +57,7 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/update-status/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http.patch(this.url + '/task/status/' + id, params, {headers: headers}).map(res => res.json());
     }
 
     updatePriority(token, id) {
@@ -65,12 +65,12 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/update-priority/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http.patch(this.url + '/task/priority/' + id, params, {headers: headers}).map(res => res.json());
     }
 
     deleteTask(token, id) {
         let headers = new Headers({'Authorization': token});
 
-        return this._http.delete(this.url + '/task/remove/' + id, {headers: headers}).map(res => res.json());
+        return this._http.delete(this.url + '/task/' + id, {headers: headers}).map(res => res.json());
     }
 }
