@@ -107,3 +107,7 @@ body {
 .priority-toggle {
     padding-top: 15px !important;
 }
+
+.full-width {
+  width: 100% !important;
+}
