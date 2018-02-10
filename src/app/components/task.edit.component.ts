@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {UserService} from '../services/user.service';
 import {TaskService} from '../services/task.service';
 import {Task} from '../models/task';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'task-edit',
@@ -23,12 +24,19 @@ export class TaskEditComponent implements OnInit {
         private _route: ActivatedRoute,
         private _router: Router,
         private _userService: UserService,
-        private _taskService: TaskService
+        private _taskService: TaskService,
+        public snackBar: MatSnackBar
     ) {
         this.page_title = 'Editar tarea';
         this.btn_title = 'Guardar';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
+    }
+
+    openSnackBar(message: string) {
+        this.snackBar.open(message, null, {
+           duration: 2000,
+        });
     }
 
     ngOnInit() {
@@ -87,6 +95,7 @@ export class TaskEditComponent implements OnInit {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
                 console.log(response);
+                this.openSnackBar('Tarea eliminada exitosamente');
                 this._router.navigate(['/index/1']);
             },
             error => {
