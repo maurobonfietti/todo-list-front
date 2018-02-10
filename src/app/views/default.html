@@ -32,7 +32,10 @@
             </div>
             <div class="clearfix"></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" />
+                <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()" />
+                <!--<mat-form-field class="full-width">-->
+                    <!--<input matInput matTooltip="El nombre de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keypress)="search()" (keydown)="search()" (change)="search()">-->
+                <!--</mat-form-field>-->
             </div>
             <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
               <i class="material-icons">search</i>
