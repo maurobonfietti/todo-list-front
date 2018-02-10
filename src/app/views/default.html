@@ -30,9 +30,6 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-<!--            <div class="form-group col-md-4 priority-toggle" style="display: none;">
-                <mat-slide-toggle color="warn" name="priority" [(ngModel)]="priority" (change)="search()">Mostrar Prioritarias</mat-slide-toggle>
-            </div>-->
             <div class="clearfix"></div>
             <div class="form-group col-md-10">
                 <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" />
@@ -82,9 +79,6 @@
                             <a class="task" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 'todo'">{{task.title | slice:0:100}} {{task.title.length > 100 ? '[...]' : ''}}</a>
                         </h4>
                     </td>
-<!--                    <td>
-                        <button mat-raised-button color="primary" matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
-                    </td>-->
                     <td>
                         <button mat-icon-button [matMenuTriggerFor]="menu">
                             <mat-icon>more_vert</mat-icon>
