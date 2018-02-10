@@ -82,8 +82,23 @@
                             <a class="task" [routerLink]="['task-edit', task.id]" *ngIf="task.status == 'todo'">{{task.title | slice:0:100}} {{task.title.length > 100 ? '[...]' : ''}}</a>
                         </h4>
                     </td>
-                    <td>
+<!--                    <td>
                         <button mat-raised-button color="primary" matTooltip="Presiona aquí para editar la tarea" [routerLink]="['task-edit', task.id]">Editar</button>
+                    </td>-->
+                    <td>
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item [routerLink]="['task-edit', task.id]">
+                                <mat-icon>mode_edit</mat-icon>
+                                <span>Editar</span>
+                            </button>
+                            <button mat-menu-item (click)="deleteTask(task.id)">
+                                <mat-icon>delete_forever</mat-icon>
+                                <span>Eliminar</span>
+                            </button>
+                        </mat-menu>
                     </td>
                 </tr>
             </table>

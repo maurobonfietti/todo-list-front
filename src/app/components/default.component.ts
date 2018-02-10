@@ -168,6 +168,7 @@ export class DefaultComponent implements OnInit {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
                 console.log(response);
+                this.openSnackBar('Tarea eliminada exitosamente');
                 this.search();
             },
             error => {

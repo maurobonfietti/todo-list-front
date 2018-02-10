@@ -6,7 +6,7 @@ import {
     MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
     MatSnackBarModule, MatTooltipModule, MatToolbarModule, MatIconModule,
     MatListModule, MatChipsModule, MatSelectModule, MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule, MatMenuModule
 } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -51,6 +51,7 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         MatSelectModule,
         MatSlideToggleModule,
         MatExpansionModule,
+        MatMenuModule,
         BrowserAnimationsModule,
         ReactiveFormsModule
     ],
