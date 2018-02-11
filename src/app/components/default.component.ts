@@ -8,12 +8,12 @@ import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
-  templateUrl: '../views/dialog.html',
+  templateUrl: '../views/task.delete.dialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class DeleteTaskDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<DeleteTaskDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
 }
@@ -57,15 +57,13 @@ export class DefaultComponent implements OnInit {
         this.loading = 'show';
     }
 
-    openDialog(id): void {
-        let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-            width: '300px',
+    openDialog(id: string): void {
+        let dialogRef = this.dialog.open(DeleteTaskDialog, {
+            width: '280px',
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            //console.log('The dialog was closed');
             if (result == true) {
-                //alert(id);
                 this.deleteTask(id);
             }
         });

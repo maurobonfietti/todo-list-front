@@ -14,7 +14,7 @@ import {routing, appRoutingProviders} from './app.routing';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login.component';
 import {RegisterComponent, SnackBarRegisterError, SnackBarRegisterOk} from './components/register.component';
-import {DefaultComponent, DialogOverviewExampleDialog} from './components/default.component';
+import {DefaultComponent, DeleteTaskDialog} from './components/default.component';
 import {UserEditComponent} from './components/user.edit.component';
 import {TaskNewComponent} from './components/task.new.component';
 import {TaskEditComponent} from './components/task.edit.component';
@@ -32,7 +32,7 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         GenerateDatePipe,
         SnackBarRegisterError,
         SnackBarRegisterOk,
-        DialogOverviewExampleDialog,
+        DeleteTaskDialog,
     ],
     imports: [
         routing,
@@ -60,7 +60,7 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
     entryComponents: [
         SnackBarRegisterError,
         SnackBarRegisterOk,
-        DialogOverviewExampleDialog,
+        DeleteTaskDialog,
     ],
     providers: [
         appRoutingProviders
