@@ -34,14 +34,6 @@ body {
     width: 300px !important;
 }
 
-.full-width {
-  width: 100%;
-}
-
-.mat-snack-bar-container.mat-snack-bar-center {
-    /*margin: 50px !important;*/
-}
-
 .task {
     color: currentColor !important;
     font-size: 15px !important;

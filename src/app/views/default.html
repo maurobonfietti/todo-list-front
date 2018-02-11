@@ -32,26 +32,28 @@
             </div>
             <div class="clearfix"></div>
             <div class="col-md-11">
-<!--                <input type="text" class="form-control" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()" />-->
                 <mat-form-field class="full-width">
                     <input matInput matTooltip="Ingresa una descripcion de la tarea que estas buscando" placeholder="¿Que tarea estás buscando?" name="searchString" [(ngModel)]="searchString" (keyup)="search()" (change)="search()">
                 </mat-form-field>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
-              <i class="material-icons">search</i>
-            </button>
+            <div class="col-md-1">
+                <button class="mdl-button mdl-js-button mdl-button--icon" (click)="search()">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
         </form>
         <form class="col-md-12">
             <div class="clearfix"></div>
             <div class="col-md-11">
-                <!--<input type="text" class="form-control" placeholder="Crear una tarea nueva..." name="title" #title="ngModel" [(ngModel)]="task.title" />-->
                 <mat-form-field class="full-width">
                     <input matInput matTooltip="Ingresa el nombre de la tarea que quieres crear" placeholder="Crear una tarea nueva..." name="title" [(ngModel)]="task.title">
                 </mat-form-field>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask()">
-              <i class="material-icons">add</i>
-            </button>
+            <div class="col-md-1">
+                <button class="mdl-button mdl-js-button mdl-button--icon" (click)="createTask()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
         </form>
         <div class="all-tasks">
             <table class="table table-hover table-stripped" id="tasks-list" *ngIf="tasks && tasks.length > 0">
