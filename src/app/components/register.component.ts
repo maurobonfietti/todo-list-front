@@ -36,8 +36,11 @@ export class SnackBarRegisterError {
 
 export class RegisterComponent implements OnInit {
     public title: string;
-    public user: User;
+    public user;
     public status;
+
+    public identity;
+    public token;
 
     emailFormControl = new FormControl('', [
         Validators.required,
@@ -51,7 +54,12 @@ export class RegisterComponent implements OnInit {
         public snackBar: MatSnackBar
     ) {
         this.title = 'Registrate';
-        this.user = new User(1, "user", "", "", "", "");
+//        this.user = new User(1, "user", "", "", "", "");
+        this.user = {
+            "email": "",
+            "password": "",
+            "getData": true
+        };
     }
 
     openSnackBarOk() {
@@ -76,7 +84,48 @@ export class RegisterComponent implements OnInit {
                 this.status = response.status;
                 this.status = 'success';
                 this.openSnackBarOk();
-                window.location.href = '/login';
+                console.log(this.user);
+//                window.location.href = '/login';
+                localStorage.removeItem('identity');
+                localStorage.removeItem('token');
+                this.identity = null;
+                this.token = null;
+//                window.location.href = '/login';
+                this._userService.signUp(this.user).subscribe(
+                    response => {
+                        this.identity = response;
+                        if (this.identity.lenght <= 1) {
+                            console.log('Server Error...');
+                        } {
+                            console.log(this.identity);
+                            if (!this.identity.status) {
+                                localStorage.setItem('identity', JSON.stringify(this.identity));
+                                this.user.getData = false;
+                                this._userService.signUp(this.user).subscribe(
+                                    response => {
+                                        this.token = response;
+                                        if (this.token.lenght <= 1) {
+                                            console.log('Server Error...');
+                                        } {
+                                            if (!this.token.status) {
+                                                localStorage.setItem('token', JSON.stringify(this.token));
+                                                this.openSnackBarOk();
+                                                window.location.href = '/index/1';
+                                            }
+                                        }
+                                    },
+                                    error => {
+                                        console.log(<any> error);
+                                    }
+                                );
+                            }
+                        }
+                    },
+                    error => {
+                        console.log(<any> error);
+                        this.openSnackBarError();
+                    }
+                );
             },
             error => {
                 console.log(<any> error);
