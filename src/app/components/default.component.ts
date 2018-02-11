@@ -4,6 +4,19 @@ import {UserService} from '../services/user.service';
 import {TaskService} from '../services/task.service';
 import {Task} from '../models/task';
 import {MatSnackBar} from '@angular/material';
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
+@Component({
+  templateUrl: '../views/dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+}
 
 @Component({
     selector: 'default',
@@ -35,12 +48,27 @@ export class DefaultComponent implements OnInit {
         private _router: Router,
         private _userService: UserService,
         private _taskService: TaskService,
-        public snackBar: MatSnackBar
+        public snackBar: MatSnackBar,
+        public dialog: MatDialog
     ) {
         this.title = 'Home Page';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.loading = 'show';
+    }
+
+    openDialog(id): void {
+        let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+            width: '300px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            //console.log('The dialog was closed');
+            if (result == true) {
+                //alert(id);
+                this.deleteTask(id);
+            }
+        });
     }
 
     openSnackBar(message: string) {

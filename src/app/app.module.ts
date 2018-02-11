@@ -6,7 +6,7 @@ import {
     MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
     MatSnackBarModule, MatTooltipModule, MatToolbarModule, MatIconModule,
     MatListModule, MatChipsModule, MatSelectModule, MatSlideToggleModule,
-    MatExpansionModule, MatMenuModule
+    MatExpansionModule, MatMenuModule, MatDialogModule
 } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,7 +14,7 @@ import {routing, appRoutingProviders} from './app.routing';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login.component';
 import {RegisterComponent, SnackBarRegisterError, SnackBarRegisterOk} from './components/register.component';
-import {DefaultComponent} from './components/default.component';
+import {DefaultComponent, DialogOverviewExampleDialog} from './components/default.component';
 import {UserEditComponent} from './components/user.edit.component';
 import {TaskNewComponent} from './components/task.new.component';
 import {TaskEditComponent} from './components/task.edit.component';
@@ -32,6 +32,7 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         GenerateDatePipe,
         SnackBarRegisterError,
         SnackBarRegisterOk,
+        DialogOverviewExampleDialog,
     ],
     imports: [
         routing,
@@ -52,12 +53,14 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         MatSlideToggleModule,
         MatExpansionModule,
         MatMenuModule,
+        MatDialogModule,
         BrowserAnimationsModule,
         ReactiveFormsModule
     ],
     entryComponents: [
         SnackBarRegisterError,
         SnackBarRegisterOk,
+        DialogOverviewExampleDialog,
     ],
     providers: [
         appRoutingProviders
