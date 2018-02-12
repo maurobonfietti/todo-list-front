@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../models/user';
 import {UserService} from '../services/user.service';
-
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatSnackBar} from '@angular/material';
@@ -54,7 +52,6 @@ export class RegisterComponent implements OnInit {
         public snackBar: MatSnackBar
     ) {
         this.title = 'Registrate';
-//        this.user = new User(1, "user", "", "", "", "");
         this.user = {
             "email": "",
             "password": "",
@@ -85,12 +82,10 @@ export class RegisterComponent implements OnInit {
                 this.status = 'success';
                 this.openSnackBarOk();
                 console.log(this.user);
-//                window.location.href = '/login';
                 localStorage.removeItem('identity');
                 localStorage.removeItem('token');
                 this.identity = null;
                 this.token = null;
-//                window.location.href = '/login';
                 this._userService.signUp(this.user).subscribe(
                     response => {
                         this.identity = response;

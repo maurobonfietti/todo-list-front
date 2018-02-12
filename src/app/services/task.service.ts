@@ -3,6 +3,10 @@ import {Http, Headers} from '@angular/http';
 import "rxjs/add/operator/map";
 import {environment} from '../../environments/environment';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+
 @Injectable()
 export class TaskService {
     public url: string;
@@ -11,13 +15,13 @@ export class TaskService {
         this.url = environment.apiUrl;
     }
 
-    create(token, task) {
+    create(token, task): Observable<any> {
         let json = JSON.stringify(task);
         let params = "json=" + json;
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.post(this.url + '/task', params, {headers: headers}).map(res => res.json());
+        return this._http.post(this.url + '/task', params, {headers: headers}).map(res => res.json()).catch((e: any) => Observable.throw(e));
     }
 
     search(token, search = null, filter = null, order = null, priority = null, page = null) {
