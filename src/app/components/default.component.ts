@@ -20,7 +20,27 @@ export class DeleteTaskDialog {
 @Component({
     selector: 'default',
     templateUrl: '../views/default.html',
-    providers: [UserService, TaskService]
+    providers: [UserService, TaskService],
+  styles: [`
+    .search-results {
+      height: 100%;
+      // overflow: scroll;
+    }
+    .title {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0,0,0,.5);
+      color: white;
+      width: 100%;
+    }
+    .search-results.modal-open {
+      display: none;
+    }
+    .title small {
+      color: #eaeaea;
+    }
+  `],
 })
 
 export class DefaultComponent implements OnInit {
@@ -42,6 +62,9 @@ export class DefaultComponent implements OnInit {
     public searchString: string;
     public totalItemsCount = 0;
 
+    array = [];
+    sum = 100;
+
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
@@ -54,7 +77,23 @@ export class DefaultComponent implements OnInit {
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.loading = 'show';
+        for (let i = 0; i < this.sum; ++i) {
+            this.array.push(i);
+        }
     }
+
+    onScrollDown () {
+        console.log('scrolled!!');
+        const start = this.sum;
+        this.sum += 10;
+        for (let i = start; i < this.sum; ++i) {
+            this.array.push(i);
+        }
+    }
+
+//    onScroll () {
+//        console.log('scrolled!!')
+//    }
 
     openDialog(id: string): void {
         let dialogRef = this.dialog.open(DeleteTaskDialog, {
@@ -209,3 +248,21 @@ export class DefaultComponent implements OnInit {
         audio.play();
     }
 }
+
+var modalText = `Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+
+Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.`;

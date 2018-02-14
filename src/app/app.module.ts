@@ -20,6 +20,9 @@ import {TaskNewComponent} from './components/task.new.component';
 import {TaskEditComponent} from './components/task.edit.component';
 import {GenerateDatePipe} from './pipes/generate.date.pipe';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -55,7 +58,8 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
         MatMenuModule,
         MatDialogModule,
         BrowserAnimationsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        InfiniteScrollModule,
     ],
     entryComponents: [
         SnackBarRegisterError,
@@ -68,3 +72,5 @@ import {GenerateDatePipe} from './pipes/generate.date.pipe';
     bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

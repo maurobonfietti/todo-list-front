@@ -129,3 +129,13 @@
         </div>
     </div>
 </div>
+
+    <div class="search-results"
+         infinite-scroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="10"
+         (scrolled)="onScrollDown()">
+      <p *ngFor="let i of array">
+        {{i}}
+      </p>
+    </div>
