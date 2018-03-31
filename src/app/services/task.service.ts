@@ -17,15 +17,12 @@ export class TaskService {
     }
 
     create(token, task): Observable<any> {
-        let json = JSON.stringify(task);
-        let params = "json=" + json;
+        let params = "json=" + JSON.stringify(task);
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-//        return this._http.post(this.url + '/task', params, {headers: headers})
-//            .map(res => res.json())
-//            .catch((e: any) => Observable.throw(e));
-        return this._http.post(this.url + '/task', params, {headers: headers})
+        return this._http
+            .post(this.url + '/task', params, {headers: headers})
             .map(res => res.json())
             .catch(this.errorHandler);
     }
@@ -40,31 +37,37 @@ export class TaskService {
         let params = '&filter=' + filter + '&order=' + order + '&priority=' + priority;
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
-        if (page == null) {
+
+        if (page === null) {
             page = 1;
         }
-        if (search == null) {
+        if (search === null) {
             url = this.url + '/task/search?page=' + page;
         } else {
             url = this.url + '/task/search/' + search + '?page=' + page;
         }
 
-        return this._http.get(url + '?' + params, {headers: headers}).map(res => res.json());
+        return this._http
+            .get(url + '?' + params, {headers: headers})
+            .map(res => res.json());
     }
 
     getTask(token, id) {
         let headers = new Headers({'Authorization': token});
 
-        return this._http.get(this.url + '/task/' + id, {headers: headers}).map(res => res.json());
+        return this._http
+            .get(this.url + '/task/' + id, {headers: headers})
+            .map(res => res.json());
     }
 
     update(token, task, id) {
-        let json = JSON.stringify(task);
-        let params = "json=" + json + '&authorization=' + token;
+        let params = "json=" + JSON.stringify(task);
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http
+            .patch(this.url + '/task/' + id, params, {headers: headers})
+            .map(res => res.json());
     }
 
     updateStatus(token, id) {
@@ -72,7 +75,9 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/status/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http
+            .patch(this.url + '/task/status/' + id, params, {headers: headers})
+            .map(res => res.json());
     }
 
     updatePriority(token, id) {
@@ -80,12 +85,16 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.patch(this.url + '/task/priority/' + id, params, {headers: headers}).map(res => res.json());
+        return this._http
+            .patch(this.url + '/task/priority/' + id, params, {headers: headers})
+            .map(res => res.json());
     }
 
     deleteTask(token, id) {
         let headers = new Headers({'Authorization': token});
 
-        return this._http.delete(this.url + '/task/' + id, {headers: headers}).map(res => res.json());
+        return this._http
+            .delete(this.url + '/task/' + id, {headers: headers})
+            .map(res => res.json());
     }
 }
