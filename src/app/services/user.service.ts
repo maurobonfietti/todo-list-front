@@ -18,11 +18,32 @@ export class UserService {
     }
 
     signUp(user_to_login: string) {
-        let json = JSON.stringify(user_to_login);
-        let params = "json=" + json;
+        let params = "json=" + JSON.stringify(user_to_login);
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
-        return this._http.post(this.url + '/login', params, {headers: headers}).map(res => res.json());
+        return this._http
+            .post(this.url + '/login', params, {headers: headers})
+            .map(res => res.json());
+    }
+
+    register(user_to_register) {
+        let params = "json=" + JSON.stringify(user_to_register);
+        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
+
+        return this._http
+            .post(this.url + '/user', params, {headers: headers})
+            .map(res => res.json());
+    }
+
+    update_user(user_to_update: User) {
+        let json = JSON.stringify(user_to_update);
+        let params = "json=" + json + '&authorization=' + this.getToken();
+        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
+        headers.append('Authorization', this.getToken());
+
+        return this._http
+            .patch(this.url + '/user', params, {headers: headers})
+            .map(res => res.json());
     }
 
     getIdentity() {
@@ -47,22 +68,5 @@ export class UserService {
         }
 
         return this.token;
-    }
-
-    register(user_to_register) {
-        let json = JSON.stringify(user_to_register);
-        let params = "json=" + json;
-        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
-
-        return this._http.post(this.url + '/user', params, {headers: headers}).map(res => res.json());
-    }
-
-    update_user(user_to_update: User) {
-        let json = JSON.stringify(user_to_update);
-        let params = "json=" + json + '&authorization=' + this.getToken();
-        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
-        headers.append('Authorization', this.getToken());
-
-        return this._http.patch(this.url + '/user', params, {headers: headers}).map(res => res.json());
     }
 }
