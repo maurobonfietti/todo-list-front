@@ -42,6 +42,8 @@ export class DefaultComponent implements OnInit {
     public searchString: string;
     public totalItemsCount = 0;
 
+    public errorMsg;
+
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
@@ -94,6 +96,7 @@ export class DefaultComponent implements OnInit {
             },
             error => {
                 console.log(<any> error);
+//                this.errorMsg = error;
             }
         );
     }

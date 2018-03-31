@@ -6,6 +6,7 @@ import {environment} from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class TaskService {
@@ -21,7 +22,17 @@ export class TaskService {
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', token);
 
-        return this._http.post(this.url + '/task', params, {headers: headers}).map(res => res.json()).catch((e: any) => Observable.throw(e));
+//        return this._http.post(this.url + '/task', params, {headers: headers})
+//            .map(res => res.json())
+//            .catch((e: any) => Observable.throw(e));
+        return this._http.post(this.url + '/task', params, {headers: headers})
+            .map(res => res.json())
+            .catch(this.errorHandler);
+    }
+
+    errorHandler(error: HttpErrorResponse) {
+        console.log(error);
+        return Observable.throw(error.message || "Internal Server Error...");
     }
 
     search(token, search = null, filter = null, order = null, priority = null, page = null) {
