@@ -10,11 +10,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: '../views/task.delete.dialog.html',
 })
 export class DeleteTaskDialog {
-
   constructor(
     public dialogRef: MatDialogRef<DeleteTaskDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-
 }
 
 @Component({
@@ -33,15 +31,12 @@ export class DefaultComponent implements OnInit {
     public pagesPrev;
     public pagesNext;
     public loading = 'show';
-
     public task: Task;
-
     public priority = 2;
     public filter = 2;
     public order = 1;
     public searchString: string;
     public totalItemsCount = 0;
-
     public errorMsg;
 
     constructor(
@@ -71,9 +66,9 @@ export class DefaultComponent implements OnInit {
     }
 
     openSnackBar(message: string) {
-      this.snackBar.open(message, null, {
-        duration: 2000,
-      });
+        this.snackBar.open(message, null, {
+            duration: 2000,
+        });
     }
 
     ngOnInit() {
@@ -84,18 +79,13 @@ export class DefaultComponent implements OnInit {
     createTask() {
         this._taskService.create(this.token, this.task).subscribe(
             response => {
-                this.status_task = response.status;
-                if (this.status_task != "success") {
-                    this.status_task = 'error';
-                } else {
-                    this.openSnackBar('Tarea creada exitosamente');
-                    this.task = new Task(0, '', '', 'todo', 'null', 'null');
-                    this.search();
-                }
+                this.openSnackBar('Tarea creada exitosamente');
+                this.task = new Task(0, '', '', 'todo', 'null', 'null');
+                this.search();
             },
             error => {
                 console.log(<any> error);
-//                this.errorMsg = error;
+//                this.openSnackBar('¡Ups! Ocurrió un error al crear la tarea.');
             }
         );
     }
