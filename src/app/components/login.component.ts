@@ -81,32 +81,19 @@ export class LoginComponent implements OnInit {
         this._userService.signUp(this.user).subscribe(
             response => {
                 this.identity = response;
-                if (this.identity.lenght <= 1) {
-                    console.log('Server Error...');
-                } {
-                    console.log(this.identity);
-                    if (!this.identity.status) {
-                        localStorage.setItem('identity', JSON.stringify(this.identity));
-                        this.user.getData = false;
-                        this._userService.signUp(this.user).subscribe(
-                            response => {
-                                this.token = response;
-                                if (this.token.lenght <= 1) {
-                                    console.log('Server Error...');
-                                } {
-                                    if (!this.token.status) {
-                                        localStorage.setItem('token', JSON.stringify(this.token));
-                                        this.openSnackBar('¡Te has identificado correctamente!');
-                                        window.location.href = '/index/1';
-                                    }
-                                }
-                            },
-                            error => {
-                                console.log(<any> error);
-                            }
-                        );
+                localStorage.setItem('identity', JSON.stringify(this.identity));
+                this.user.getData = false;
+                this._userService.signUp(this.user).subscribe(
+                    response => {
+                        this.token = response;
+                        localStorage.setItem('token', JSON.stringify(this.token));
+                        this.openSnackBar('¡Te has identificado correctamente!');
+                        window.location.href = '/index/1';
+                    },
+                    error => {
+                        console.log(<any> error);
                     }
-                }
+                );
             },
             error => {
                 console.log(<any> error);
