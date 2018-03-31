@@ -53,19 +53,15 @@ export class TaskEditComponent implements OnInit {
             let id = +params['id'];
             this._taskService.getTask(this.token, id).subscribe(
                 response => {
-                    if (response.status == 'success') {
-                        if (response.task.user.id == this.identity.sub) {
-                            this.task = response.task;
-                            this.loading = 'hide';
-                        } else {
-                            this._router.navigate(['/index/1']);
-                        }
-                    } else {
-                        this._router.navigate(['/login']);
+                    if (response.task.user.id !== this.identity.sub) {
+                        this._router.navigate(['/index/1']);
                     }
+                    this.task = response.task;
+                    this.loading = 'hide';
                 },
                 error => {
                     console.log(<any> error);
+                    this.openSnackBar('¡Ups! Ocurrió un error al cargar la tarea.');
                 }
             );
         });
@@ -76,16 +72,12 @@ export class TaskEditComponent implements OnInit {
             let id = +params['id'];
             this._taskService.update(this.token, this.task, id).subscribe(
                 response => {
-                    this.status_task = response.status;
-                    if (this.status_task != "success") {
-                        this.status_task = 'error';
-                    } else {
-                        this.task = response.data;
-                        this._router.navigate(['/index/1']);
-                    }
+                    this.task = response.data;
+                    this._router.navigate(['/index/1']);
                 },
                 error => {
                     console.log(<any> error);
+                    this.openSnackBar('¡Ups! Ocurrió un error al guardar la tarea.');
                 }
             );
         });
