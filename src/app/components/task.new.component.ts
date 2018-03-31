@@ -41,13 +41,8 @@ export class TaskNewComponent implements OnInit {
     onSubmit() {
         this._taskService.create(this.token, this.task).subscribe(
             response => {
-                this.status_task = response.status;
-                if (this.status_task != "success") {
-                    this.status_task = 'error';
-                } else {
-                    this.task = response.data;
-                    this._router.navigate(['/']);
-                }
+                this.task = response.data;
+                this._router.navigate(['/']);
             },
             error => {
                 console.log(<any> error);

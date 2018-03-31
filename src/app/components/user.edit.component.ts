@@ -61,11 +61,7 @@ export class UserEditComponent implements OnInit {
         this._userService.update_user(this.user).subscribe(
             response => {
                 this.status = response.status;
-                if (this.status != "success") {
-                    this.status = 'error';
-                } else {
-                    localStorage.setItem('identity', JSON.stringify(this.user));
-                }
+                localStorage.setItem('identity', JSON.stringify(this.user));
             },
             error => {
                 console.log(<any> error);
