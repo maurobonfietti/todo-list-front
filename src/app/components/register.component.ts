@@ -72,7 +72,6 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('register.component [OK]');
     }
 
     onSubmit() {
@@ -81,7 +80,6 @@ export class RegisterComponent implements OnInit {
                 this.status = response.status;
                 this.status = 'success';
                 this.openSnackBarOk();
-                console.log(this.user);
                 localStorage.removeItem('identity');
                 localStorage.removeItem('token');
                 this.identity = null;

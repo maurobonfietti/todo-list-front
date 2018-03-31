@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('login.component [OK]');
         this.logout();
         this.redirectIfIdentity();
     }

@@ -77,7 +77,6 @@ export class DefaultComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('default.component [OK]');
         this.search();
         this.task = new Task(0, '', '', 'todo', 'null', 'null');
     }
@@ -195,7 +194,6 @@ export class DefaultComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
-                console.log(response);
                 this.openSnackBar('Tarea eliminada exitosamente');
                 this.search();
             },
