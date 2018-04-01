@@ -37,7 +37,6 @@ export class DefaultComponent implements OnInit {
     public order = 1;
     public searchString: string;
     public totalItemsCount = 0;
-    public errorMsg;
 
     constructor(
         private _route: ActivatedRoute,
@@ -85,7 +84,7 @@ export class DefaultComponent implements OnInit {
             },
             error => {
                 console.log(<any> error);
-//                this.openSnackBar('¡Ups! Ocurrió un error al crear la tarea.');
+                this.openSnackBar('¡Ups! Ocurrió un error al crear la tarea.');
             }
         );
     }
@@ -93,7 +92,7 @@ export class DefaultComponent implements OnInit {
     search() {
         this.loading = 'show';
         this._route.params.forEach((params: Params) => {
-            if (!this.searchString || this.searchString.trim().length == 0) {
+            if (!this.searchString || this.searchString.trim().length === 0) {
                 this.searchString = null;
             }
             let page = +params['page'];
@@ -102,26 +101,22 @@ export class DefaultComponent implements OnInit {
             }
             this._taskService.search(this.token, this.searchString, this.filter, this.order, this.priority, page).subscribe(
                 response => {
-                    if (response.status == 'success') {
-                        this.tasks = response.data;
-                        this.totalItemsCount = response.totalItemsCount;
-                        this.loading = 'hide';
-                        this.pages = [];
-                        for (let i = 0; i < response.totalPages; i++) {
-                            this.pages.push(i);
-                        }
-                        if (page >= 2) {
-                            this.pagesPrev = (page - 1);
-                        } else {
-                            this.pagesPrev = page;
-                        }
-                        if (page < response.totalPages || page == 1) {
-                            this.pagesNext = (page + 1);
-                        } else {
-                            this.pagesNext = page;
-                        }
+                    this.tasks = response.data;
+                    this.totalItemsCount = response.totalItemsCount;
+                    this.loading = 'hide';
+                    this.pages = [];
+                    for (let i = 0; i < response.totalPages; i++) {
+                        this.pages.push(i);
+                    }
+                    if (page >= 2) {
+                        this.pagesPrev = (page - 1);
                     } else {
-                        this._router.navigate(['/index/1']);
+                        this.pagesPrev = page;
+                    }
+                    if (page < response.totalPages || page === 1) {
+                        this.pagesNext = (page + 1);
+                    } else {
+                        this.pagesNext = page;
                     }
                 },
                 error => {
@@ -134,13 +129,8 @@ export class DefaultComponent implements OnInit {
     updateStatus(id: string) {
         this._taskService.updateStatus(this.token, id).subscribe(
             response => {
-                this.status_task = response.status;
-                if (this.status_task != "success") {
-                    this.status_task = 'error';
-                } else {
-                    this.playSound();
-                    this.search();
-                }
+                this.playSound();
+                this.search();
             },
             error => {
                 console.log(<any> error);
@@ -151,12 +141,7 @@ export class DefaultComponent implements OnInit {
     updatePriority(id: string) {
         this._taskService.updatePriority(this.token, id).subscribe(
             response => {
-                this.status_task = response.status;
-                if (this.status_task != "success") {
-                    this.status_task = 'error';
-                } else {
-                    this.search();
-                }
+                this.search();
             },
             error => {
                 console.log(<any> error);
@@ -168,12 +153,8 @@ export class DefaultComponent implements OnInit {
         this._taskService.update(this.token, task, task.id).subscribe(
             response => {
                 this.status_task = response.status;
-                if (this.status_task != "success") {
-                    this.status_task = 'error';
-                } else {
-                    this.task = response.data;
-                    this.search();
-                }
+                this.task = response.data;
+                this.search();
             },
             error => {
                 console.log(<any> error);
