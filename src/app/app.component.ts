@@ -20,6 +20,6 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        console.log("todo.list.front.version: 0.13.0");
+        console.log('todo.list.front.version: 0.13.1');
     }
 }
