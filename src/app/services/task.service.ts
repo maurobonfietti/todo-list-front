@@ -71,22 +71,20 @@ export class TaskService {
     }
 
     updateStatus(token, id) {
-        let params = '&authorization=' + token;
-        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
+        let headers = new Headers();
         headers.append('Authorization', token);
 
         return this._http
-            .patch(this.url + '/task/status/' + id, params, {headers: headers})
+            .patch(this.url + '/task/status/' + id, null, {headers: headers})
             .map(res => res.json());
     }
 
     updatePriority(token, id) {
-        let params = '&authorization=' + token;
-        let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
+        let headers = new Headers();
         headers.append('Authorization', token);
 
         return this._http
-            .patch(this.url + '/task/priority/' + id, params, {headers: headers})
+            .patch(this.url + '/task/priority/' + id, null, {headers: headers})
             .map(res => res.json());
     }
 
