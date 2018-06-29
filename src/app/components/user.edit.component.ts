@@ -18,7 +18,6 @@ export class errorStateMatcher implements ErrorStateMatcher {
     templateUrl: '../views/user.edit.html',
     providers: [UserService]
 })
-
 export class UserEditComponent implements OnInit {
     public title: string;
     public user: User;

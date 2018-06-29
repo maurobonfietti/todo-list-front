@@ -20,7 +20,6 @@ export class DeleteTaskDialog {
     templateUrl: '../views/default.html',
     providers: [UserService, TaskService]
 })
-
 export class DefaultComponent implements OnInit {
     public title: string;
     public identity;
@@ -78,7 +77,7 @@ export class DefaultComponent implements OnInit {
     createTask() {
         this._taskService.create(this.token, this.task).subscribe(
             response => {
-                this.openSnackBar('Tarea creada exitosamente');
+                this.openSnackBar('Tarea creada exitosamente.');
                 this.task = new Task(0, '', '', 'todo', 'null', 'null');
                 this.search();
             },
@@ -165,7 +164,7 @@ export class DefaultComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
-                this.openSnackBar('Tarea eliminada exitosamente');
+                this.openSnackBar('Tarea eliminada exitosamente.');
                 this.search();
             },
             error => {

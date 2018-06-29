@@ -17,7 +17,6 @@ export class errorStateMatcher implements ErrorStateMatcher {
     templateUrl: '../views/login.html',
     providers: [UserService]
 })
-
 export class LoginComponent implements OnInit {
 
     emailFormControl = new FormControl('', [
@@ -40,9 +39,9 @@ export class LoginComponent implements OnInit {
     ) {
         this.title = 'Inicia sesión';
         this.user = {
-            "email": "",
-            "password": "",
-            "getData": true
+            'email': '',
+            'password': '',
+            'getData': true
         };
     }
 
@@ -73,7 +72,7 @@ export class LoginComponent implements OnInit {
     redirectIfIdentity() {
         let identity = this._userService.getIdentity();
         if (identity != null && identity.sub) {
-            this._router.navigate(["/index/1"]);
+            this._router.navigate(['/index/1']);
         }
     }
 

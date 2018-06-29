@@ -30,7 +30,6 @@ export class SnackBarRegisterError {
     templateUrl: '../views/register.html',
     providers: [UserService]
 })
-
 export class RegisterComponent implements OnInit {
     public title: string;
     public user;
@@ -51,9 +50,9 @@ export class RegisterComponent implements OnInit {
     ) {
         this.title = 'Registrate';
         this.user = {
-            "email": "",
-            "password": "",
-            "getData": true
+            'email': '',
+            'password': '',
+            'getData': true
         };
     }
 

@@ -9,7 +9,6 @@ import {Task} from '../models/task';
     templateUrl: '../views/task.html',
     providers: [UserService, TaskService]
 })
-
 export class TaskNewComponent implements OnInit {
     public page_title: string;
     public btn_title: string;

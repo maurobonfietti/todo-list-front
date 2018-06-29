@@ -10,7 +10,6 @@ import {MatSnackBar} from '@angular/material';
     templateUrl: '../views/task.html',
     providers: [UserService, TaskService]
 })
-
 export class TaskEditComponent implements OnInit {
     public page_title: string;
     public btn_title: string;
@@ -86,7 +85,7 @@ export class TaskEditComponent implements OnInit {
     deleteTask(id: string) {
         this._taskService.deleteTask(this.token, id).subscribe(
             response => {
-                this.openSnackBar('Tarea eliminada exitosamente');
+                this.openSnackBar('Tarea eliminada exitosamente.');
                 this._router.navigate(['/index/1']);
             },
             error => {
