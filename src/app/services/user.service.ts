@@ -16,8 +16,8 @@ export class UserService {
         console.log('Prod: ' + environment.production + '. Url: ' + this.url);
     }
 
-    login(user_to_login: string) {
-        let params = "json=" + JSON.stringify(user_to_login);
+    login(user: string) {
+        let params = "json=" + JSON.stringify(user);
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
         return this._http
@@ -25,8 +25,8 @@ export class UserService {
             .map(res => res.json());
     }
 
-    register(user_to_register) {
-        let params = "json=" + JSON.stringify(user_to_register);
+    register(user) {
+        let params = "json=" + JSON.stringify(user);
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
 
         return this._http
@@ -34,8 +34,8 @@ export class UserService {
             .map(res => res.json());
     }
 
-    update_user(user_to_update: User) {
-        let json = JSON.stringify(user_to_update);
+    updateUser(user: User) {
+        let json = JSON.stringify(user);
         let params = "json=" + json + '&authorization=' + this.getToken();
         let headers = new Headers({'Content-Type': "application/x-www-form-urlencoded"});
         headers.append('Authorization', this.getToken());
@@ -47,8 +47,7 @@ export class UserService {
 
     getIdentity() {
         let identity = JSON.parse(localStorage.getItem('identity'));
-
-        if (identity != "undefined") {
+        if (identity != 'undefined') {
             this.identity = identity;
         } else {
             this.identity = null;
@@ -59,8 +58,7 @@ export class UserService {
 
     getToken() {
         let token = JSON.parse(localStorage.getItem('token'));
-
-        if (token != "undefined") {
+        if (token != 'undefined') {
             this.token = token;
         } else {
             this.token = null;

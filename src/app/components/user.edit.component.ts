@@ -57,7 +57,7 @@ export class UserEditComponent implements OnInit {
     }
 
     onSubmit() {
-        this._userService.update_user(this.user).subscribe(
+        this._userService.updateUser(this.user).subscribe(
             response => {
                 this.status = response.status;
                 localStorage.setItem('identity', JSON.stringify(this.user));
