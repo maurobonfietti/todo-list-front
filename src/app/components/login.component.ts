@@ -77,12 +77,12 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        this._userService.signUp(this.user).subscribe(
+        this._userService.login(this.user).subscribe(
             response => {
                 this.identity = response;
                 localStorage.setItem('identity', JSON.stringify(this.identity));
                 this.user.getData = false;
-                this._userService.signUp(this.user).subscribe(
+                this._userService.login(this.user).subscribe(
                     response => {
                         this.token = response;
                         localStorage.setItem('token', JSON.stringify(this.token));

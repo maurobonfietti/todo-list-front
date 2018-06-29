@@ -16,7 +16,7 @@ export class UserService {
         console.log('Prod: ' + environment.production + '. Url: ' + this.url);
     }
 
-    signUp(user_to_login: string) {
+    login(user_to_login: string) {
         let params = "json=" + JSON.stringify(user_to_login);
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
