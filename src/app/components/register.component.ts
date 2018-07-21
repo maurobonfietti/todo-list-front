@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         private _userService: UserService,
         public snackBar: MatSnackBar
     ) {
-        this.title = 'Registrate';
+        this.title = 'REGISTRATE';
         this.user = {
             'email': '',
             'password': '',

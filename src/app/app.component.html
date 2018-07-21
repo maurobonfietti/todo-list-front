@@ -5,13 +5,13 @@
                 <img src='assets/img/todo.png' height="36" width="36" />
             </a>
             &nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/index/1']" *ngIf="identity && identity.sub">
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/index/1']" *ngIf="identity && identity.sub">
                 <i class="material-icons">done_all</i> Mis Tareas
             </button>
             <button id="view-source" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
                 <i class="material-icons">add</i>
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
+            <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
                 Crear tarea
             </button>
             <div class="mdl-layout-spacer"></div>

@@ -45,7 +45,7 @@ export class DefaultComponent implements OnInit {
         public snackBar: MatSnackBar,
         public dialog: MatDialog
     ) {
-        this.title = 'Home Page';
+        this.title = '';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
         this.loading = 'show';

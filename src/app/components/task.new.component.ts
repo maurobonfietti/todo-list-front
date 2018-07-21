@@ -23,8 +23,8 @@ export class TaskNewComponent implements OnInit {
         private _userService: UserService,
         private _taskService: TaskService
     ) {
-        this.page_title = 'Crear tarea';
-        this.btn_title = 'Crear tarea';
+        this.page_title = 'CREAR TAREA';
+        this.btn_title = 'GUARDAR';
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
     }

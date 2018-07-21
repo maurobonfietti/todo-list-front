@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         private _userService: UserService,
         public snackBar: MatSnackBar
     ) {
-        this.title = 'Inicia sesión';
+        this.title = 'INICIA SESIÓN';
         this.user = {
             'email': '',
             'password': '',
