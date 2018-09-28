@@ -2,7 +2,7 @@
     <legend>{{title}}</legend>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7 no-padding">
         <mat-form-field class="full-width">
-            <input matInput matTooltip="Ingresa tu dirección de email" placeholder="Tu email" name="email" [(ngModel)]="user.email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
+            <input id="username" matInput matTooltip="Ingresa tu dirección de email" placeholder="Tu email" name="email" [(ngModel)]="user.email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" required>
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Ingrese un email válido.
             </mat-error>
@@ -12,7 +12,7 @@
         </mat-form-field>
         <br />
         <mat-form-field class="full-width">
-            <input matInput  matTooltip="Ingresa tu contraseña" placeholder="Tu contraseña" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+            <input id="userpass" matInput  matTooltip="Ingresa tu contraseña" placeholder="Tu contraseña" type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
             <mat-error *ngIf="!password.valid && password.touched">
                 La contraseña es <strong>requerida</strong>.
             </mat-error>
