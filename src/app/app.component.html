@@ -8,6 +8,7 @@
             <button class="mat-raised-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/index/1']" *ngIf="identity && identity.sub">
                 <i class="material-icons">done_all</i> Mis Tareas
             </button>
+            &nbsp;&nbsp;
             <button id="view-source" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary" [routerLink]="['/task-new']" *ngIf="identity && identity.sub">
                 <i class="material-icons">add</i>
             </button>
@@ -24,6 +25,7 @@
             <button class="mat-raised-button mdl-button mdl-js-button mdl-button--primary" [routerLink]="['/login']" *ngIf="!identity">
                 Acceder
             </button>
+            &nbsp;&nbsp;
             <button class="mat-raised-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" [routerLink]="['/register']" *ngIf="!identity">
                 Registrar
             </button>
