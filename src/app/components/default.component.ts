@@ -100,6 +100,8 @@ export class DefaultComponent implements OnInit {
             }
             this._taskService.search(this.token, this.searchString, this.filter, this.order, this.priority, page).subscribe(
                 response => {
+//                    console.log(response);
+                    console.log(response.stats);
                     this.tasks = response.data;
                     this.totalItemsCount = response.totalItemsCount;
                     this.loading = 'hide';
