@@ -1,11 +1,11 @@
 # Another ToDo List Web App:
 
-This is another 'ToDo List' app, for do amazing stuff ;-)
+This is another ToDo List app, for do amazing stuff ;-)
 
-## Application:
+## Application Stack:
 
 * Frontend: Angular 4 + Angular Material Design.
-* Backend: Symfony PHP Framework + MySQL DB.
+* Backend: Symfony PHP Framework + MySQL DB. [Go to repository](https://github.com/maurobonfietti/todo-list-back).
 
 
 ## Execute Commands:
@@ -13,6 +13,7 @@ This is another 'ToDo List' app, for do amazing stuff ;-)
 ``` bash
 npm install
 npm start
+# or npm run local
 # or ng serve
 ```
 
