@@ -6,11 +6,10 @@
     "ng": "ng",
     "start": "node server.js",
     "local": "ng serve",
-    "build": "ng build",
+    "build": "ng build -prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build -prod",
     "test:integration": "cypress open"
   },
   "engines": {
@@ -65,5 +64,6 @@
     "tslint": "~5.3.2",
     "webpack-dev-server": ">=3.1.11",
     "cryptiles": ">=4.1.2"
-  }
+  },
+  "heroku-run-build-script": true
 }
