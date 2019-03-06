@@ -1,6 +1,6 @@
-# Another ToDo List Web App:
+# ToDo List:
 
-This is another ToDo List app, for do amazing stuff ;-)
+This is another To-Do List web app, for do amazing stuff ;-)
 
 ## Application Stack:
 
