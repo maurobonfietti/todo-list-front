@@ -1,6 +1,9 @@
-# ToDo List:
+# Another ToDo List Web App:
 
-This is another To-Do List web app, for do amazing stuff ;-)
+This is another ToDo List app, for do amazing stuff ;-)
+
+[Try Demo.](http://bit.ly/2ngN0rB) *Hosted Using Heroku Free.*
+
 
 ## Application Stack:
 
@@ -17,7 +20,4 @@ npm start
 # or ng serve
 ```
 
-
-## Enjoy Online Demo:
-
-Hosted using Heroku, online demo: http://bit.ly/2ngN0rB
+### Enjoy ;-)
