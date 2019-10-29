@@ -1,17 +1,19 @@
 # Another ToDo List Web App:
 
-This is another ToDo List app, for do amazing stuff ;-)
+This is another ToDo List app ;-)
 
-[Try Demo.](http://bit.ly/2ngN0rB) *Hosted Using Heroku Free.*
+## Demo:
+
+[Try Live Demo.](http://bit.ly/2ngN0rB) *[Hosted Using Heroku Free.]*
 
 
 ## Application Stack:
 
-* Frontend: Angular 4 + Angular Material Design.
-* Backend: Symfony PHP Framework + MySQL DB. [Go to repository](https://github.com/maurobonfietti/todo-list-back).
+* Frontend: Angular 4 + Material Design.
+* Backend: Symfony PHP + MySQL DB. [Go to repository](https://github.com/maurobonfietti/todo-list-back).
 
 
-## Execute Commands:
+## Commands:
 
 ``` bash
 npm install
