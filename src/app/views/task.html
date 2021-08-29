@@ -12,7 +12,7 @@
         </div>
         <form #taskNewForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7 no-padding">
             <mat-form-field class="full-width">
-                <input matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="title" #title="ngModel" [(ngModel)]="task.title" required autofocus>
+                <input id="task-name" matInput matTooltip="El nombre de la tarea" placeholder="Nombre de la tarea" name="title" #title="ngModel" [(ngModel)]="task.title" required autofocus>
                 <mat-error *ngIf="!title.valid && title.touched">
                     El nombre es <strong>requerido</strong>.
                 </mat-error>
@@ -20,7 +20,7 @@
             <br />
             <br />
             <mat-form-field class="full-width">
-                <textarea matInput matTextareaAutosize matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
+                <textarea id="task-description" matInput matTextareaAutosize matTooltip="Descripcion adicional sobre la tarea" placeholder="Notas adicionales" name="description" #description="ngModel" [(ngModel)]="task.description"></textarea>
             </mat-form-field>
             <br />
             <br />
@@ -28,7 +28,7 @@
             <br />
             <br />
             <br />
-            <button mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
+            <button id="button-save-task" mat-raised-button color="primary" matTooltip="Presiona aquí para guardar la tarea" [disabled]="!taskNewForm.form.valid">{{btn_title}}</button>
             &nbsp;&nbsp;&nbsp;
             <button mat-raised-button color="warn" matTooltip="Presiona aquí para borrar la tarea" *ngIf='task.id != 0' (click)="deleteTask(task.id)">BORRAR</button>
         </form>
